@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head> 
+    <body>
+  <script>
+
+function game()
+{
+     
+    let s = "scissors";
+    let p = "paper" ;
+    let r = "rock";
+
+      let playerScore = 0;
+      let computerScore = 0;
+      let gameScore =5;
+
+
+
+
+    function computerPlay() 
+    {
+        n=0.9;
+        n= Math.random() * n;
+      if (n<=0.3){
+        return r ;
+      }else if (n<=0.6){
+        return s;
+      }else {
+        return p;
+      }   
+    }
+
+      const computerSelection = computerPlay(); 
+
+    function playRound(){
+      
+      let choice= prompt("elect rock, paper, scissors")
+      
+      const playerSelection = choice;
+      const computerSelection = computerPlay(); 
+
+
+      let w = "you win!";
+      let l = "you lose!";
+      let t = "I'ts a Tie!";
+      // results of play
+
+      let strP = "Paper Beats Rock";
+      let strR = "Rocks Beats Scissors";
+      let strS = "Scissors Beats Paper";
+      // coment after result
+
+      if ( playerSelection == computerSelection){
+          alert("Tie!");
+      
+      }else if(playerSelection===s && computerSelection===p ) { 
+           
+          playerScore ++
+          alert (w+strS);
+      }else if(playerSelection===p  && computerSelection===r){
+         
+          playerScore++
+          alert (w+strP);
+      
+      }else if (playerSelection===r  && computerSelection===s){
+      
+          playerScore++
+          alert (w+strR);
+          
+      }else if (playerSelection===s  && computerSelection===r){
+         
+           computerScore++
+          alert (l+strR);
+         
+      }else if (playerSelection=== p  && computerSelection=== s){
+          
+          computerScore++
+          alert (l+strS);
+          
+    
+      }else if (playerSelection===r && computerSelection===p){
+          
+          computerScore++
+          alert (l+strP);
+          
+      }else {
+          alert ("Invalid");
+      }
+
+      console.log(`player choice ${playerSelection}`);
+      console.log(`computer choice ${computerSelection}`);
+      console.log("----Results------")
+      console.log(`Computer Score = ${computerScore}`);
+      console.log(`Player Score = ${playerScore}`);
+    
+    }
+    playRound();
+ 
+    function loop(){
+        while (playerScore && computerScore < gameScore){
+            playRound();
+        if (playerScore== gameScore){
+            alert ('win');
+            break;
+        }else if(computerScore==gameScore){
+                alert ('lose');
+                break;
+            }
+        }            
+         }
+         loop();
+}
+game();
+
+  </script>
+</body>
+</html>
